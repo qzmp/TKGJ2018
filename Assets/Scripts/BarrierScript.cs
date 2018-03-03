@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BarrierScript : MonoBehaviour {
     public Color color;
+    private bool damaged = false;
 
     private BoardController boardController;
 
@@ -15,7 +16,7 @@ public class BarrierScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (!damaged && other.tag == "Player")
         {
             if(other.gameObject.GetComponent<PlayerController>().color == this.color)
             {
@@ -30,6 +31,7 @@ public class BarrierScript : MonoBehaviour {
             {
                 other.gameObject.GetComponent<PlayerController>().hp--;
             }
+            damaged = true;
         }
     }
 }
