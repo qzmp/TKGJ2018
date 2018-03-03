@@ -16,7 +16,7 @@ public class BackgroundScroller : MonoBehaviour {
         // Compares by Height, Length, and Width.
         public int Compare(GameObject x, GameObject y)
         {
-            return x.transform.position.x.CompareTo(y.transform.position.x);
+            return y.transform.position.x.CompareTo(x.transform.position.x);
         }
     }
 
@@ -40,8 +40,17 @@ public class BackgroundScroller : MonoBehaviour {
             Vector3 spawnPosition = managedObjects.First.Value.transform.position;
             float objectsDifference = Mathf.Abs(managedObjects.Last.Value.transform.position.x - managedObjects.Last.Previous.Value.transform.position.x);
             spawnPosition.x += objectsDifference;
-            Quaternion rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
+            Quaternion rotation;
+            if(prefabs[0].name == "background")
+            {
+                rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
+            }
+            else
+            {
+                rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
+            }
             managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
+            managedObjects.First.Value.transform.SetParent(transform);
         }
 
 	}
