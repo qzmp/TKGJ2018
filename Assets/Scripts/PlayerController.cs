@@ -38,14 +38,14 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// Przemieszczanie gracza wzgledem pozycji myszki
-		Vector3 playerPosition = cameraObject.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position);
-		Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
+        // Przemieszczanie gracza wzgledem pozycji myszki
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
+        Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
 		float moveVertical = 0;
-		if (Input.mousePosition.y > playerPosition.y)
-			moveVertical = 1;
-		else if (Input.mousePosition.y < playerPosition.y)
-			moveVertical = -1;
+        if ((Input.mousePosition.y > playerPosition.y + 1 * verticalSpeed) && (playerPosition.y < Camera.main.pixelHeight))
+            moveVertical = 1;
+        else if ((Input.mousePosition.y < playerPosition.y - 1 * verticalSpeed) && (playerPosition.y > 0))
+            moveVertical = -1;
 		Vector3 movement = new Vector3 (horizontalSpeed, moveVertical * verticalSpeed, 0.0f);
 		GetComponent<Rigidbody>().velocity = movement;
 
