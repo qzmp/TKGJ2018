@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BarrierScript : MonoBehaviour {
-
     public Color color;
+
+    private BoardController boardController;
 
     private void Start()
     {
+        boardController = FindObjectOfType<BoardController>();
         GetComponent<Renderer>().material.SetColor("_Color", this.color);
     }
 
@@ -17,7 +19,11 @@ public class BarrierScript : MonoBehaviour {
         {
             if(other.gameObject.GetComponent<PlayerController>().color == this.color)
             {
-                other.gameObject.GetComponent<PlayerController>().score++;
+                var playerController = other.gameObject.GetComponent<PlayerController>();
+                playerController.score++;
+                playerController.horizontalSpeed = playerController.horizontalSpeed + playerController.score * playerController.horizontalSpeedIncrease;
+                playerController.verticalSpeed = playerController.verticalSpeed + playerController.score * playerController.getVerticalSpeedIncrease();
+                boardController.spawnWait -= boardController.spawnWaitDecrease;
                 Destroy(gameObject);
             }
             else
