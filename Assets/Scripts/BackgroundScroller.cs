@@ -5,27 +5,43 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour {
 
-    public GameObject background;
+    public GameObject[] prefabs;
     public GameObject[] managedBackgroundsArray;
-    private LinkedList<GameObject> managedBackgrounds;
+    private LinkedList<GameObject> managedObjects;
 
     private float planesDifference;
 
-	// Use this for initialization
-	void Start () {
-        managedBackgrounds = new LinkedList<GameObject>(managedBackgroundsArray);
-        planesDifference = Mathf.Abs(managedBackgrounds.Last.Value.transform.position.x - managedBackgrounds.Last.Previous.Value.transform.position.x);
-	}
+    public class Comp : IComparer<GameObject>
+    {
+        // Compares by Height, Length, and Width.
+        public int Compare(GameObject x, GameObject y)
+        {
+            return x.transform.position.x.CompareTo(y.transform.position.x);
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
+        List<GameObject> startingObjects = new List<GameObject>();
+        foreach (Transform child in transform)
+        {
+            startingObjects.Add(child.gameObject);
+        }
+        startingObjects.Sort(new Comp());
+        
+        managedObjects = new LinkedList<GameObject>(startingObjects);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(managedBackgrounds.Last.Value == null)
+		if(managedObjects.Last.Value == null)
         {
-            managedBackgrounds.RemoveLast();
-            Vector3 spawnPosition = managedBackgrounds.First.Value.transform.position;
-            spawnPosition.x += planesDifference;
+            managedObjects.RemoveLast();
+            Vector3 spawnPosition = managedObjects.First.Value.transform.position;
+            float objectsDifference = Mathf.Abs(managedObjects.Last.Value.transform.position.x - managedObjects.Last.Previous.Value.transform.position.x);
+            spawnPosition.x += objectsDifference;
             Quaternion rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
-            managedBackgrounds.AddFirst(Instantiate(background, spawnPosition, rotation));
+            managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
         }
 
 	}
