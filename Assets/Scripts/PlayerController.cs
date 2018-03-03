@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 	//private AudioSource audioSource;
 	public AudioClip point;
 	public AudioClip miss;
+	public AudioClip Change;
 
 	//private AudioSource audioSource2;
 	public AudioClip wind;
