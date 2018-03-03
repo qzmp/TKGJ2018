@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 302500092}
   - component: {fileID: 302500091}
   - component: {fileID: 302500090}
+  - component: {fileID: 302500095}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -262,13 +263,28 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302500089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &302500095
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302500089}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &339117486
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +464,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 386171177}
+--- !u!54 &719516822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719516817}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &780020176
 Prefab:
   m_ObjectHideFlags: 0
@@ -760,7 +791,7 @@ MonoBehaviour:
   startWait: 0
   spawnWait: 3
   spawnWaitRandomPercent: 0.3
-  spawnLocation: {x: 12, y: 4, z: 0}
+  spawnLocation: {x: 30, y: 4, z: 0}
 --- !u!4 &1399008379
 Transform:
   m_ObjectHideFlags: 0
@@ -809,7 +840,7 @@ MonoBehaviour:
   startWait: 0
   spawnWait: 3
   spawnWaitRandomPercent: 0.3
-  spawnX: 20
+  spawnX: 30
   spawnYMin: 0
   spawnYMax: 0
   spawnZMin: 2
