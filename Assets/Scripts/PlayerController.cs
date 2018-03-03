@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+	private AudioSource audioSource;
+	public AudioClip point;
+	public AudioClip miss;
+
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
     public float horizontalSpeed = 5;
@@ -61,6 +65,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start () 
 	{
+		audioSource = GetComponent<AudioSource> ();
+
 		// Ustawienie koloru wiatru na czarny (brak koloru)
 		Red = false;
 		Green = false;
@@ -224,11 +230,17 @@ public class PlayerController : MonoBehaviour {
 
     private void updateScore()
     {
+		audioSource.clip = point;
+		audioSource.Play ();
+
         uiController.UpdateScore(score);
     }
 
     private void updateHP()
     {
+		audioSource.clip = miss;
+		audioSource.Play ();
+
         uiController.RemoveHP();
         if(hp == 0)
         {
