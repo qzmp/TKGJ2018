@@ -55,13 +55,8 @@ public class PlayerController : MonoBehaviour {
     private Renderer renderer;
     private Animator anim;
 
-<<<<<<< HEAD
     public UIController uiController;
-
-	// Use this for initialization
-=======
-    // Use this for initialization
->>>>>>> 2617e7f446672e31183bf7f1b42f094b10cb0fe2
+    
 	void Start () 
 	{
 		// Ustawienie koloru wiatru na czarny (brak koloru)
@@ -71,14 +66,9 @@ public class PlayerController : MonoBehaviour {
         color = Color.black;
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
-<<<<<<< HEAD
-        
-=======
 
 	    verticalSpeedIncrease = horizontalSpeedIncrease / verticalTohorizontalSpeedIncreaseFactor;
 
-        score = 0;
->>>>>>> 2617e7f446672e31183bf7f1b42f094b10cb0fe2
 	    updateViewedColor();
     }
 
