@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
 
         score = 0;
-        renderer = GetComponent<Renderer>();
     }
 
 
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour {
         // Score update
 	    if (hp > 0)
 	    {
-	        score++;
+	        //score++;
 	    }
 
 	    // Przemieszczanie gracza wzgledem pozycji myszki
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 
     void rotatePlayer()
     {
-        transform.Rotate(new Vector3(1, 0, 0), rotateSpeed);
+        GetComponentInChildren<Transform>().Rotate(new Vector3(1, 0, 0), rotateSpeed);
     }
 
 	void FixedUpdate ()

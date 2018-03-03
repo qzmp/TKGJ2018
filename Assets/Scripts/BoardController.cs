@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoardController : MonoBehaviour {
 
-    public GameObject barrierPrefab;
+    public GameObject[] spawns;
     public GameObject player;
     public float startWait = 5;
     public float spawnWait = 5;
@@ -24,7 +24,7 @@ public class BoardController : MonoBehaviour {
         while (true)
         {
             Vector3 spawnPosition = new Vector3(player.transform.position.x + spawnLocation.x, Random.Range(-spawnLocation.y, spawnLocation.y), spawnLocation.z);
-            Instantiate(barrierPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(spawns[Random.Range(0, spawns.Length - 1)], spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(spawnWait);
         }
     }
