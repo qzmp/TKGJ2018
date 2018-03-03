@@ -10,14 +10,15 @@ public class FollowScript : MonoBehaviour {
 
 	void Start ()
 	{
-		speed = 4.0f;
 	}
 
     // Update is called once per frame
     void Update()
     {
+        speed = target.GetComponent<PlayerController>().horizontalSpeed;
+
         //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		//transform.Translate (5.0f * Time.deltaTime, 0.0f, 0.0f, Space.World);
-		GetComponent<Rigidbody>().velocity = new Vector3 (speed, 0.0f, 0.0f);;
+        //transform.Translate (5.0f * Time.deltaTime, 0.0f, 0.0f, Space.World);
+        GetComponent<Rigidbody>().velocity = new Vector3 (speed, 0.0f, 0.0f);;
     }
 }
