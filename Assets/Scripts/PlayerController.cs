@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
     public float horizontalSpeed = 5;
+    public float rotateSpeed = 3;
 
 	// Referencja do kamery
 	public GameObject cameraObject;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     public Color color;
 
     private Renderer renderer;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () 
@@ -32,8 +34,9 @@ public class PlayerController : MonoBehaviour {
 		Green = false;
 		Blue = false;
         color = Color.black;
-        renderer = GetComponent<Renderer>();
-	}
+        renderer = GetComponentInChildren<Renderer>();
+        anim = GetComponentInChildren<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -65,6 +68,12 @@ public class PlayerController : MonoBehaviour {
             Blue = !Blue;
             SetWindColor();
         }
+        rotatePlayer();
+    }
+
+    void rotatePlayer()
+    {
+        transform.Rotate(new Vector3(1, 0, 0), rotateSpeed);
     }
 
 	void FixedUpdate ()
@@ -118,7 +127,8 @@ public class PlayerController : MonoBehaviour {
 
     void updateViewedColor()
     {
-        renderer.material.SetColor("_Color", this.color);       
+        renderer.material.SetColor("_Color", this.color);
+        anim.SetTrigger("swirl");
     }
 
 
