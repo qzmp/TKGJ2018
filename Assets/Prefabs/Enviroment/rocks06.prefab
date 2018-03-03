@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4321753358262760}
   - component: {fileID: 33779776371049578}
   - component: {fileID: 23996013103180594}
+  - component: {fileID: 114052396566511540}
   m_Layer: 0
   m_Name: rocks06
   m_TagString: Untagged
@@ -82,3 +83,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057780663280424}
   m_Mesh: {fileID: 4300000, guid: 32599d5867afec8439ddacc8bf2a8b9f, type: 3}
+--- !u!114 &114052396566511540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1057780663280424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f868f48cc13e19348a4c20cf5e23b770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
