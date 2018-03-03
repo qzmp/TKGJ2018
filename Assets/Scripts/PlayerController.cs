@@ -123,21 +123,26 @@ public class PlayerController : MonoBehaviour {
 		GetComponent<Rigidbody>().velocity = movement;
 		//--------
 
-        if (Input.GetKeyDown("r"))
+        Red = false;
+        Green = false;
+        Blue = false;
+        if(Input.anyKey)
         {
-            Red = !Red;
-            SetWindColor();
+            if (Input.GetKey("q"))
+            {
+                Red = true;
+            }
+            if (Input.GetKey("w"))
+            {
+                Green = true;
+            }
+            if (Input.GetKey("e"))
+            {
+                Blue = true;
+            }
         }
-        if (Input.GetKeyDown("g"))
-        {
-            Green = !Green;
-            SetWindColor();
-        }
-        if (Input.GetKeyDown("b"))
-        {
-            Blue = !Blue;
-            SetWindColor();
-        }
+        SetWindColor();
+
         rotatePlayer();
     }
 
@@ -198,7 +203,7 @@ public class PlayerController : MonoBehaviour {
     void updateViewedColor()
     {
         renderer.material.SetColor("_Color", this.color);
-        anim.SetTrigger("swirl");
+        //anim.SetTrigger("swirl");
     }
 
 
