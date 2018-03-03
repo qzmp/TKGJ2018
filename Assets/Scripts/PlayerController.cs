@@ -227,9 +227,25 @@ public class PlayerController : MonoBehaviour {
         uiController.RemoveHP();
         if(hp == 0)
         {
-            uiController.ActivateGameOver();
-            verticalSpeed = 0;
-            horizontalSpeed = 0;
+            gameOver();
+        }
+    }
+
+    private void gameOver()
+    {
+        uiController.ActivateGameOver();
+        maybeSaveHighScore();
+        verticalSpeed = 0;
+        horizontalSpeed = 0;
+    }
+
+    private void maybeSaveHighScore()
+    {
+        var highscoreFromPrefs = PlayerPrefs.GetInt("highscore");
+        if (highscoreFromPrefs < score)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.Save();
         }
     }
 

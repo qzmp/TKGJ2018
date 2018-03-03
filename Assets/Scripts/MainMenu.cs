@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    private const string ScoreSceneName = "ScoreScene";
+    private const string ScoreSceneName = "HighscoreScene";
     private const string CreditsSceneName = "CreditsScene";
 
 
