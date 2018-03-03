@@ -22,9 +22,13 @@ public class BarrierScript : MonoBehaviour {
             {
                 var playerController = other.gameObject.GetComponent<PlayerController>();
                 playerController.score++;
-                playerController.horizontalSpeed = playerController.horizontalSpeed + playerController.score * playerController.horizontalSpeedIncrease;
-                playerController.verticalSpeed = playerController.verticalSpeed + playerController.score * playerController.getVerticalSpeedIncrease();
-                boardController.spawnWait -= boardController.spawnWaitDecrease;
+                playerController.updateSpeed();
+               
+                if (boardController.spawnWait > boardController.spawnWaitMinValue)
+                {
+                    boardController.spawnWait -= boardController.spawnWaitDecrease;
+                }
+
                 Destroy(gameObject);
             }
             else
