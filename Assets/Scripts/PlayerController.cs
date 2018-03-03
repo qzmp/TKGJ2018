@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 
 	// Referencja do kamery
-	public GameObject cameraObject;
 
 	// Flagi koloru wiatru
 	private bool Red;
@@ -45,15 +44,16 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		// Przemieszczanie gracza wzgledem pozycji myszki
-		Vector3 playerPosition = cameraObject.GetComponent<Camera>().WorldToScreenPoint(GetComponent<Transform>().position);
+		Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
 		Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
 		float moveVertical = 0;
-		if (Input.mousePosition.y > playerPosition.y)
+		if ((Input.mousePosition.y > playerPosition.y+1*speed) && (playerPosition.y < Camera.main.pixelHeight))
 			moveVertical = 1;
-		else if (Input.mousePosition.y < playerPosition.y)
+		else if ((Input.mousePosition.y < playerPosition.y-1*speed) && (playerPosition.y > 0))
 			moveVertical = -1;
 		Vector3 movement = new Vector3 (0.0f, moveVertical, 0.0f);
-		GetComponent<Rigidbody>().velocity = movement * speed;
+
+			GetComponent<Rigidbody>().velocity = movement * speed;
 
 	}
 
