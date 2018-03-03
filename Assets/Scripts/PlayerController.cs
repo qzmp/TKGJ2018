@@ -2,23 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Mozliwe kolory wiatru
-public enum COLORS
-{
-	BLACK,
-	RED,
-	GREEN,
-	BLUE,
-	CYAN,
-	MAGENTA,
-	YELLOW,
-	WHITE
-}
 
 public class PlayerController : MonoBehaviour {
 
+    public int hp = 3;
+
 	// Predkosc ruchu
-	public float speed;
+	public float verticalSpeed = 5;
+    public float horizontalSpeed = 5;
 
 	// Referencja do kamery
 	public GameObject cameraObject;
@@ -28,8 +19,10 @@ public class PlayerController : MonoBehaviour {
 	private bool Green;
 	private bool Blue;
 
-	// Kolor wiatru
-	public COLORS color;
+    // Kolor wiatru
+    public Color color;
+
+    private Renderer renderer;
 
 	// Use this for initialization
 	void Start () 
@@ -38,7 +31,8 @@ public class PlayerController : MonoBehaviour {
 		Red = false;
 		Green = false;
 		Blue = false;
-		color = COLORS.BLACK;
+        color = Color.black;
+        renderer = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -52,29 +46,30 @@ public class PlayerController : MonoBehaviour {
 			moveVertical = 1;
 		else if (Input.mousePosition.y < playerPosition.y)
 			moveVertical = -1;
-		Vector3 movement = new Vector3 (0.0f, moveVertical, 0.0f);
-		GetComponent<Rigidbody>().velocity = movement * speed;
+		Vector3 movement = new Vector3 (horizontalSpeed, moveVertical * verticalSpeed, 0.0f);
+		GetComponent<Rigidbody>().velocity = movement;
 
-	}
+        if (Input.GetKeyDown("r"))
+        {
+            Red = !Red;
+            SetWindColor();
+        }
+        if (Input.GetKeyDown("g"))
+        {
+            Green = !Green;
+            SetWindColor();
+        }
+        if (Input.GetKeyDown("b"))
+        {
+            Blue = !Blue;
+            SetWindColor();
+        }
+    }
 
 	void FixedUpdate ()
 	{
 		// Zmiana flag koloru po przycisnieciu klawiszy RGB
-		if (Input.GetKeyDown ("r")) 
-		{
-			Red = !Red;
-			SetWindColor ();
-		}
-		if (Input.GetKeyDown ("g"))
-		{
-			Green = !Green;
-			SetWindColor ();
-		}
-		if (Input.GetKeyDown ("b"))
-		{
-			Blue = !Blue;
-			SetWindColor ();
-		}
+
 
 		// Ruch przy pomocy strzalek
 		//if (Input.GetKeyDown ("up")) 
@@ -97,33 +92,33 @@ public class PlayerController : MonoBehaviour {
 			if (Green) 
 			{
 				if (Blue)
-					color = COLORS.WHITE;
+					color = Color.white;
 				else
-					color = COLORS.YELLOW;
+					color = Color.yellow;
 			} 
 			else if (Blue)
-				color = COLORS.MAGENTA;
+				color = Color.magenta;
 			else
-				color = COLORS.RED;
+				color = Color.red;
 		} 
 		else if (Green) 
 		{
 			if (Blue)
-				color = COLORS.CYAN;
+				color = Color.cyan;
 			else
-				color = COLORS.GREEN;
+				color = Color.green;
 		} 
 		else if (Blue)
-			color = COLORS.BLUE;
+			color = Color.blue;
 		else
-			color = COLORS.BLACK;
+			color = Color.black;
+        updateViewedColor();
 	}
 
-	// Metoda zwracajaca kolor wiatru
-	public COLORS GetColor ()
-	{
-		return color;
-	}
+    void updateViewedColor()
+    {
+        renderer.material.SetColor("_Color", this.color);       
+    }
 
 
 }
