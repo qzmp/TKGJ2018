@@ -29,8 +29,10 @@ public class PlayerController : MonoBehaviour {
 	public float verticalSpeed = 5;
     public float horizontalSpeed = 5;
     public float rotateSpeed = 3;
-    public float horizontalSpeedIncrease = 0.01f;
-    public float verticalTohorizontalSpeedIncreaseFactor;
+    public float horizontalSpeedIncrease = 0.1f;
+    public float horizontalToVerticalSpeedIncreaseFactor = 2;
+    public float maxHorizontalSpeed = 20;
+    public float maxVerticalSpeed = 20;
 
     private float verticalSpeedIncrease;
 
@@ -56,8 +58,8 @@ public class PlayerController : MonoBehaviour {
     private Animator anim;
 
     public UIController uiController;
-    
-	void Start () 
+
+    void Start () 
 	{
 		// Ustawienie koloru wiatru na czarny (brak koloru)
 		Red = false;
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour {
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
 
-	    verticalSpeedIncrease = horizontalSpeedIncrease / verticalTohorizontalSpeedIncreaseFactor;
+	    verticalSpeedIncrease = horizontalSpeedIncrease / horizontalToVerticalSpeedIncreaseFactor;
 
 	    updateViewedColor();
     }
@@ -208,5 +210,15 @@ public class PlayerController : MonoBehaviour {
             verticalSpeed = 0;
             horizontalSpeed = 0;
         }
+    }
+
+    public void updateSpeed()
+    {
+        if (horizontalSpeed < maxHorizontalSpeed)
+        {
+            horizontalSpeed = horizontalSpeed + score * horizontalSpeedIncrease;
+            verticalSpeed = verticalSpeed + score * verticalSpeedIncrease;
+        }
+ 
     }
 }
