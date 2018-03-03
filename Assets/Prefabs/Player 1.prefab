@@ -565,6 +565,7 @@ MonoBehaviour:
   rotateSpeed: 3
   cameraObject: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  horizontalSpeedIncrease: 0
 --- !u!135 &135240641227165574
 SphereCollider:
   m_ObjectHideFlags: 1

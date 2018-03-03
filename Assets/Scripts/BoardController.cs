@@ -9,10 +9,14 @@ public class BoardController : MonoBehaviour {
     public float startWait = 5;
     public float spawnWait = 5;
     public float spawnWaitRandomPercent = 0.3f;
+    public float spawnWaitDecrease = 0.01f;
+
+    public const float spawnWaitMinValue = 2;
+
 
     public Vector3 spawnLocation;
 
-    
+
     void Start()
     {
         StartCoroutine(Spawn());

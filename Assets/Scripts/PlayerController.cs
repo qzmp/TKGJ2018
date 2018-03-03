@@ -12,9 +12,20 @@ public class PlayerController : MonoBehaviour {
 	public float verticalSpeed = 5;
     public float horizontalSpeed = 5;
     public float rotateSpeed = 3;
+    public float horizontalSpeedIncrease = 0.01f;
+    public float verticalTohorizontalSpeedIncreaseFactor;
 
-	// Referencja do kamery
-	public GameObject cameraObject;
+    private float verticalSpeedIncrease;
+
+    public float getVerticalSpeedIncrease()
+    {
+        return verticalSpeedIncrease;
+    }
+
+
+
+    // Referencja do kamery
+    public GameObject cameraObject;
 
 	// Flagi koloru wiatru
 	private bool Red;
@@ -26,7 +37,6 @@ public class PlayerController : MonoBehaviour {
 
     private Renderer renderer;
     private Animator anim;
-    public float horizontalSpeedIncrease = 0.01f;
 
     // Use this for initialization
 	void Start () 
@@ -38,6 +48,8 @@ public class PlayerController : MonoBehaviour {
         color = Color.black;
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
+
+	    verticalSpeedIncrease = horizontalSpeedIncrease / verticalTohorizontalSpeedIncreaseFactor;
 
         score = 0;
 	    updateViewedColor();
