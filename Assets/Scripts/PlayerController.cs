@@ -54,7 +54,8 @@ public class PlayerController : MonoBehaviour {
             moveVertical = 1;
         else if ((Input.mousePosition.y < playerPosition.y - 1 * verticalSpeed) && (playerPosition.y > 0))
             moveVertical = -1;
-		Vector3 movement = new Vector3 (horizontalSpeed, moveVertical * verticalSpeed, 0.0f);
+        float scaledSpeed = Mathf.Abs(Mathf.Abs(playerPosition.y - Input.mousePosition.y) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
+        Vector3 movement = new Vector3 (horizontalSpeed, moveVertical * scaledSpeed, 0.0f);
 		GetComponent<Rigidbody>().velocity = movement;
 
         if (Input.GetKeyDown("r"))
