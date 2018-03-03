@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
 
         score = 0;
+	    updateViewedColor();
     }
-
 
 	
 	// Update is called once per frame
@@ -143,4 +143,18 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+    public bool IsRedEnabled()
+    {
+        return Red;
+    }
+
+    public bool IsGreenEnabled()
+    {
+        return Green;
+    }
+
+    public bool IsBlueEnabled()
+    {
+        return Blue;
+    }
 }
