@@ -35,15 +35,14 @@ public class PlayerController : MonoBehaviour {
 		Green = false;
 		Blue = false;
         color = Color.black;
-<<<<<<< HEAD
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
-    }
-=======
-	    score = 0;
+
+        score = 0;
         renderer = GetComponent<Renderer>();
-	}
->>>>>>> a4e9e6372b9efe2a5e9b604b45f9e16c22c19166
+    }
+
+
 	
 	// Update is called once per frame
 	void Update () {
