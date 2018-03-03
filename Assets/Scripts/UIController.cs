@@ -12,11 +12,13 @@ public class UIController : MonoBehaviour {
     public GameObject gameOverPanel;
     public GameObject pausePanel;
 
+    bool isGameOver;
+
     private int activeHP = 3;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
         {
             ActivatePause();
         }
@@ -37,6 +39,7 @@ public class UIController : MonoBehaviour {
     public void ActivateGameOver()
     {
         gameOverPanel.SetActive(true);
+        isGameOver = true;
     }
 
     public void ActivatePause()
