@@ -36,6 +36,7 @@ public class UIController : MonoBehaviour {
             HPPanel.transform.GetChild(--activeHP).gameObject.SetActive(false);
         }
     }
+
     public void ActivateGameOver()
     {
         gameOverPanel.SetActive(true);
@@ -45,6 +46,13 @@ public class UIController : MonoBehaviour {
     public void ActivatePause()
     {
         pausePanel.SetActive(true);
+        FindObjectOfType<PlayerController>().pauseGame();
+    }
+
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        FindObjectOfType<PlayerController>().resumeGame();
     }
 
     public void ExitToMainMenu()
