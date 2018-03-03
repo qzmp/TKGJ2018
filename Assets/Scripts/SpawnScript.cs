@@ -1,37 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpawnScript : MonoBehaviour {
 
-    public GameObject prefab;
-    private GameObject player;
-    public float startWait = 0;
-    public float spawnWait = 3;
-    public float spawnWaitRandomPercent = 0.3f;
-    
-    public float spawnX = 12;
-    public float spawnYMin = 0;
-    public float spawnYMax = 0;
-    public float spawnZMin = 0;
-    public float spawnZMax = 0;
-    
+    public GameObject[] prefabs;
+    public GameObject[] startingObjects;
+    public LinkedList<GameObject> managedObjects;
 
+
+    public class Comp : IComparer<GameObject>
+    {
+        // Compares by Height, Length, and Width.
+        public int Compare(GameObject x, GameObject y)
+        {
+            return x.transform.position.x.CompareTo(y.transform.position.x);
+        }
+    }
     void Start()
     {
-        player = GameObject.Find("Player");
-        StartCoroutine(Spawn());
+        Array.Sort(startingObjects, new Comp());
+        managedObjects = new LinkedList<GameObject>(startingObjects);
     }
 
-    IEnumerator Spawn()
+    private void Update()
     {
-        yield return new WaitForSeconds(startWait);
-        while (true)
+        if (managedObjects.Last.Value == null)
         {
-            Vector3 spawnPosition = new Vector3(player.transform.position.x + spawnX, Random.Range(spawnYMin, spawnYMax), Random.Range(spawnZMin, spawnZMax));
-            Quaternion rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
-            Instantiate(prefab, spawnPosition, rotation);
-            yield return new WaitForSeconds(spawnWait + Random.Range(-spawnWait * spawnWaitRandomPercent, spawnWait * spawnWaitRandomPercent));
+            managedObjects.RemoveLast();
+            Vector3 spawnPosition = managedObjects.First.Value.transform.position;
+            spawnPosition.x += managedObjects.Last.Previous.Value.transform.position.x - managedObjects.Last.Value.transform.position.x;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
+            managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
         }
     }
 }
