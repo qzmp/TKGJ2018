@@ -78,27 +78,48 @@ public class PlayerController : MonoBehaviour {
 
 
 	    // Przemieszczanie gracza wzgledem pozycji myszki
+		//--------
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
+
+		float mousePositionX = Input.mousePosition.x;
+		if (mousePositionX < 0.0f)
+			mousePositionX = 0;
+		else if (mousePositionX > Camera.main.pixelWidth)
+			mousePositionX = Camera.main.pixelWidth;
+
+		float mousePositionY = Input.mousePosition.y;
+		if (mousePositionY < 0.0f)
+			mousePositionY = 0;
+		else if (mousePositionY > Camera.main.pixelHeight)
+			mousePositionY = Camera.main.pixelHeight;
+
         Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
+
 		float moveVertical = 0;
-        if ((Input.mousePosition.y > playerPosition.y + 1 * verticalSpeed) && (playerPosition.y < Camera.main.pixelHeight))
+        if ((mousePositionY > playerPosition.y + 1 * verticalSpeed) && (playerPosition.y < Camera.main.pixelHeight))
             moveVertical = 1;
-        else if ((Input.mousePosition.y < playerPosition.y - 1 * verticalSpeed) && (playerPosition.y > 0))
+        else if ((mousePositionY < playerPosition.y - 1 * verticalSpeed) && (playerPosition.y > 0))
             moveVertical = -1;
-        float scaledSpeed = Mathf.Abs(Mathf.Abs(playerPosition.y - Input.mousePosition.y) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
 
 		float moveHorizontal = 0;
-		if ((Input.mousePosition.x > playerPosition.x + 1 * verticalSpeed) && (playerPosition.x < Camera.main.pixelWidth))
+		if ((mousePositionX > playerPosition.x + 1 * verticalSpeed) && (playerPosition.x < Camera.main.pixelWidth))
 			moveHorizontal = 1;
-		else if ((Input.mousePosition.x < playerPosition.x - 1 * verticalSpeed) && (playerPosition.x > 0))
+		else if ((mousePositionX < playerPosition.x - 1 * verticalSpeed) && (playerPosition.x > 0))
 			moveHorizontal = -1;
 		
-		float scaledSpeedY = Mathf.Abs(Mathf.Abs(playerPosition.y - Input.mousePosition.y) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
-		float scaledSpeedX = Mathf.Abs(Mathf.Abs(playerPosition.x - Input.mousePosition.x) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
+		//float scaledSpeedY = Mathf.Abs(Mathf.Abs(playerPosition.y - mousePositionY) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
+		//float scaledSpeedX = Mathf.Abs(Mathf.Abs(playerPosition.x - mousePositionX) / (Camera.main.pixelWidth / 2)) * verticalSpeed;
+
+		//float scaledSpeedY = Mathf.Sqrt((Mathf.Abs(playerPosition.y - mousePositionY))/(Camera.main.pixelHeight/50) * verticalSpeed);
+		//float scaledSpeedX = Mathf.Sqrt((Mathf.Abs(playerPosition.x - mousePositionX))/(Camera.main.pixelWidth/50) * horizontalSpeed);
+
+		float scaledSpeedY = Mathf.Sqrt((Mathf.Abs(playerPosition.y - mousePositionY))/20 * verticalSpeed);
+		float scaledSpeedX = Mathf.Sqrt((Mathf.Abs(playerPosition.x - mousePositionX))/20 * horizontalSpeed);
 
 
 		Vector3 movement = new Vector3 (horizontalSpeed + (moveHorizontal * scaledSpeedX), moveVertical * scaledSpeedY, 0.0f);
 		GetComponent<Rigidbody>().velocity = movement;
+		//--------
 
         if (Input.GetKeyDown("r"))
         {
