@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public int hp = 3;
+    public int score;
 
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
@@ -32,13 +33,20 @@ public class PlayerController : MonoBehaviour {
 		Green = false;
 		Blue = false;
         color = Color.black;
+	    score = 0;
         renderer = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        // Przemieszczanie gracza wzgledem pozycji myszki
+        // Score update
+	    if (hp > 0)
+	    {
+	        score++;
+	    }
+
+	    // Przemieszczanie gracza wzgledem pozycji myszki
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
         Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
 		float moveVertical = 0;
