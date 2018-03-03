@@ -6,10 +6,7 @@ using UnityEngine;
 public class BackgroundScroller : MonoBehaviour {
 
     public GameObject[] prefabs;
-    public GameObject[] managedBackgroundsArray;
     private LinkedList<GameObject> managedObjects;
-
-    private float planesDifference;
 
     public class Comp : IComparer<GameObject>
     {
@@ -34,24 +31,45 @@ public class BackgroundScroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(managedObjects.Last.Value == null)
+        for (LinkedListNode<GameObject> i = managedObjects.Last; i != null; i = i.Previous)
         {
-            managedObjects.RemoveLast();
-            Vector3 spawnPosition = managedObjects.First.Value.transform.position;
-            float objectsDifference = Mathf.Abs(managedObjects.Last.Value.transform.position.x - managedObjects.Last.Previous.Value.transform.position.x);
-            spawnPosition.x += objectsDifference;
-            Quaternion rotation;
-            if(prefabs[0].name == "background")
+            if(i.Value == null)
             {
-                rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
+                managedObjects.Remove(i);
+                Vector3 spawnPosition = managedObjects.First.Value.transform.position;
+                float objectsDifference = Mathf.Abs(managedObjects.Last.Value.transform.position.x - managedObjects.Last.Previous.Value.transform.position.x);
+                spawnPosition.x += objectsDifference;
+                Quaternion rotation;
+                if (prefabs[0].name == "background")
+                {
+                    rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
+                }
+                else
+                {
+                    rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
+                }
+                managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
+                managedObjects.First.Value.transform.SetParent(transform);
             }
-            else
-            {
-                rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
-            }
-            managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
-            managedObjects.First.Value.transform.SetParent(transform);
         }
+		//if(managedObjects.Last.Value == null)
+  //      {
+  //          managedObjects.RemoveLast();
+  //          Vector3 spawnPosition = managedObjects.First.Value.transform.position;
+  //          float objectsDifference = Mathf.Abs(managedObjects.Last.Value.transform.position.x - managedObjects.Last.Previous.Value.transform.position.x);
+  //          spawnPosition.x += objectsDifference;
+  //          Quaternion rotation;
+  //          if(prefabs[0].name == "background")
+  //          {
+  //              rotation = Quaternion.Euler(new Vector3(-270, 180, 0));
+  //          }
+  //          else
+  //          {
+  //              rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
+  //          }
+  //          managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
+  //          managedObjects.First.Value.transform.SetParent(transform);
+  //      }
 
 	}
 }
