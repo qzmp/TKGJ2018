@@ -25,9 +25,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-	private AudioSource audioSource;
+
+	private AudioSource[] audioSource;
+	//private AudioSource audioSource;
 	public AudioClip point;
 	public AudioClip miss;
+
+	//private AudioSource audioSource2;
+	public AudioClip wind;
 
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
@@ -65,7 +70,9 @@ public class PlayerController : MonoBehaviour {
 
     void Start () 
 	{
-		audioSource = GetComponent<AudioSource> ();
+		//audioSource = GetComponent<AudioSource> ();
+		//audioSource2 = GetComponent<AudioSource> ();
+		audioSource = GetComponents<AudioSource>();
 
 		// Ustawienie koloru wiatru na czarny (brak koloru)
 		Red = false;
@@ -101,7 +108,7 @@ public class PlayerController : MonoBehaviour {
 		else if (mousePositionY > Camera.main.pixelHeight)
 			mousePositionY = Camera.main.pixelHeight;
 
-        Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
+        //Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
 
 		float moveVertical = 0;
         if ((mousePositionY > playerPosition.y + 1 * verticalSpeed) && (playerPosition.y < Camera.main.pixelHeight))
@@ -124,6 +131,13 @@ public class PlayerController : MonoBehaviour {
 		float scaledSpeedY = Mathf.Sqrt((Mathf.Abs(playerPosition.y - mousePositionY))/20 * verticalSpeed);
 		float scaledSpeedX = Mathf.Sqrt((Mathf.Abs(playerPosition.x - mousePositionX))/20 * horizontalSpeed);
 
+		Debug.Log (Mathf.Sqrt(scaledSpeedY*scaledSpeedY + scaledSpeedX*scaledSpeedX));
+
+		if ((Mathf.Sqrt (scaledSpeedY * scaledSpeedY + scaledSpeedX * scaledSpeedX) >= 10) && !audioSource[0].isPlaying)
+		{
+			audioSource[0].clip = wind;
+			audioSource[0].Play ();
+		}
 
 		Vector3 movement = new Vector3 (horizontalSpeed + (moveHorizontal * scaledSpeedX), moveVertical * scaledSpeedY, 0.0f);
 		GetComponent<Rigidbody>().velocity = movement;
@@ -230,16 +244,16 @@ public class PlayerController : MonoBehaviour {
 
     private void updateScore()
     {
-		audioSource.clip = point;
-		audioSource.Play ();
+		audioSource[1].clip = point;
+		audioSource[1].Play ();
 
         uiController.UpdateScore(score);
     }
 
     private void updateHP()
     {
-		audioSource.clip = miss;
-		audioSource.Play ();
+		audioSource[1].clip = miss;
+		audioSource[1].Play ();
 
         uiController.RemoveHP();
         if(hp == 0)
