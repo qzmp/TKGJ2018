@@ -290,18 +290,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1849786614209778, guid: f0755b8e2887d5749bf2490238da0cae,
     type: 2}
   m_PrefabInternal: {fileID: 973703084}
---- !u!135 &386171181
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386171177}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &719516816
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,38 +477,15 @@ Prefab:
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 302500089}
-    - target: {fileID: 1849786614209778, guid: f0755b8e2887d5749bf2490238da0cae, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 95604196835947732, guid: f0755b8e2887d5749bf2490238da0cae,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1849786614209778, guid: f0755b8e2887d5749bf2490238da0cae, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1685052385867504, guid: f0755b8e2887d5749bf2490238da0cae, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 114246973467777030, guid: f0755b8e2887d5749bf2490238da0cae,
-        type: 2}
-      propertyPath: horizontalSpeedIncrease
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 114246973467777030, guid: f0755b8e2887d5749bf2490238da0cae,
-        type: 2}
-      propertyPath: verticalTohorizontalSpeedIncreaseFactor
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 114246973467777030, guid: f0755b8e2887d5749bf2490238da0cae,
         type: 2}
       propertyPath: uiController
       value: 
       objectReference: {fileID: 1631026430}
+    - target: {fileID: 1849786614209778, guid: f0755b8e2887d5749bf2490238da0cae, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0755b8e2887d5749bf2490238da0cae, type: 2}
   m_IsPrefabParent: 0
