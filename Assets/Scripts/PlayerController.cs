@@ -26,8 +26,9 @@ public class PlayerController : MonoBehaviour {
 
     private Renderer renderer;
     private Animator anim;
+    public float horizontalSpeedIncrease = 0.01f;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () 
 	{
 		// Ustawienie koloru wiatru na czarny (brak koloru)
