@@ -559,6 +559,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &503732308 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1762050980887024, guid: 258292ec121b15d448900dbf67aa48bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 2037704721}
 --- !u!1001 &719516816
 Prefab:
   m_ObjectHideFlags: 0
@@ -988,6 +993,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114738204159064236, guid: 258292ec121b15d448900dbf67aa48bc,
+        type: 2}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 503732308}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 258292ec121b15d448900dbf67aa48bc, type: 2}
   m_IsPrefabParent: 0
