@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour {
         color = Color.black;
 	    score = 0;
         renderer = GetComponent<Renderer>();
-	}
+	    updateViewedColor();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -130,4 +131,18 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+    public bool IsRedEnabled()
+    {
+        return Red;
+    }
+
+    public bool IsGreenEnabled()
+    {
+        return Green;
+    }
+
+    public bool IsBlueEnabled()
+    {
+        return Blue;
+    }
 }
