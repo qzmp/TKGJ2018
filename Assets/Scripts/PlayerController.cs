@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
         float scaledSpeed = Mathf.Abs(Mathf.Abs(playerPosition.y - Input.mousePosition.y) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
 
 		float moveHorizontal = 0;
-		if ((Input.mousePosition.x > playerPosition.x + 1 * verticalSpeed) && (playerPosition.x < Camera.main.pixelHeight))
+		if ((Input.mousePosition.x > playerPosition.x + 1 * verticalSpeed) && (playerPosition.x < Camera.main.pixelWidth))
 			moveHorizontal = 1;
 		else if ((Input.mousePosition.x < playerPosition.x - 1 * verticalSpeed) && (playerPosition.x > 0))
 			moveHorizontal = -1;
