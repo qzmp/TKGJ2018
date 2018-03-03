@@ -5,8 +5,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public int hp = 3;
-    public int score;
+    private int _hp = 3;
+    public int hp {
+        get { return _hp; }
+        set { _hp = value;
+            updateHP();
+        }
+    }
+
+    private int _score = 0;
+
+    public int score
+    {
+        get { return _score; }
+        set
+        {
+            _score = value;
+            updateScore();
+        }
+    }
 
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
@@ -27,6 +44,8 @@ public class PlayerController : MonoBehaviour {
     private Renderer renderer;
     private Animator anim;
 
+    public UIController uiController;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,8 +56,7 @@ public class PlayerController : MonoBehaviour {
         color = Color.black;
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
-
-        score = 0;
+        
 	    updateViewedColor();
     }
 
@@ -46,11 +64,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // Score update
-	    if (hp > 0)
-	    {
-	        //score++;
-	    }
 
 	    // Przemieszczanie gracza wzgledem pozycji myszki
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
@@ -156,5 +169,21 @@ public class PlayerController : MonoBehaviour {
     public bool IsBlueEnabled()
     {
         return Blue;
+    }
+
+    private void updateScore()
+    {
+        uiController.UpdateScore(score);
+    }
+
+    private void updateHP()
+    {
+        uiController.RemoveHP();
+        if(hp == 0)
+        {
+            uiController.ActivateGameOver();
+            verticalSpeed = 0;
+            horizontalSpeed = 0;
+        }
     }
 }

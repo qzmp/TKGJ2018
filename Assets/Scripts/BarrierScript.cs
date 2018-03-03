@@ -20,6 +20,10 @@ public class BarrierScript : MonoBehaviour {
                 other.gameObject.GetComponent<PlayerController>().score++;
                 Destroy(gameObject);
             }
+            else
+            {
+                other.gameObject.GetComponent<PlayerController>().hp--;
+            }
         }
     }
 }
