@@ -82,7 +82,9 @@ public class PlayerController : MonoBehaviour {
 		audioSource = GetComponents<AudioSource>();
 
 		audioSource [0].clip = null;
+		audioSource [0].loop = false;
 		audioSource [1].clip = null;
+		audioSource [1].loop = false;
 		audioSource [2].clip = wind;
 		audioSource [2].loop = true;
 		audioSource [2].Play ();
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 
 		Debug.Log (Mathf.Sqrt(scaledSpeedY*scaledSpeedY + scaledSpeedX*scaledSpeedX));
 
-		if ((Mathf.Sqrt (scaledSpeedY * scaledSpeedY + scaledSpeedX * scaledSpeedX) >= 10) && !audioSource[0].isPlaying)
+		if ((Mathf.Sqrt (scaledSpeedY * scaledSpeedY + scaledSpeedX * scaledSpeedX) >= 20) && !audioSource[0].isPlaying)
 		{
 			audioSource[0].clip = strong_wind;
 			audioSource[0].Play ();
