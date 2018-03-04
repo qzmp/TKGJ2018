@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 33991367508864526}
   - component: {fileID: 23727500072743122}
   - component: {fileID: 54234005457492608}
+  - component: {fileID: 65313078610880568}
   m_Layer: 0
   m_Name: clouds03
   m_TagString: Untagged
@@ -99,6 +100,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65313078610880568
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535643915267866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114270836137417194
 MonoBehaviour:
   m_ObjectHideFlags: 1

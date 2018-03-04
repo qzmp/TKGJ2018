@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 33637053822115034}
   - component: {fileID: 23695625215810906}
   - component: {fileID: 54998417169930006}
+  - component: {fileID: 65978885442567584}
   m_Layer: 0
   m_Name: bush04
   m_TagString: Untagged
@@ -99,6 +100,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65978885442567584
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830960430443136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114453279475911648
 MonoBehaviour:
   m_ObjectHideFlags: 1
