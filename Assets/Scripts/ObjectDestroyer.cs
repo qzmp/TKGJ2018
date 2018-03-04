@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class ObjectDestroyer : MonoBehaviour {
 
+
+
+    bool enteredCamera = false;
+
+    void OnBecameVisible()
+    {
+        enteredCamera = true;
+    }
     void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        if(enteredCamera)
+            Destroy(gameObject);
     }
 }
