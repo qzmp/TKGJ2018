@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
         var y = location.y;
 	    if (isCloud)
 	    {
-	        y = UnityEngine.Random.Range(location.y-1, location.y+1);
+	        y = UnityEngine.Random.Range(location.y-15, location.y+15);
 	    }
 
         Vector3 spawnPosition = new Vector3(transform.position.x + location.x, y, location.z);

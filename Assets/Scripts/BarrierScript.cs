@@ -11,7 +11,8 @@ public class BarrierScript : MonoBehaviour {
     private void Start()
     {
         boardController = FindObjectOfType<BoardController>();
-        GetComponent<Renderer>().material.SetColor("_Color", this.color);
+        GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", this.color);
+        GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", this.color);
     }
 
     private void OnTriggerEnter(Collider other)

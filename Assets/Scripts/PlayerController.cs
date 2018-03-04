@@ -52,11 +52,7 @@ public class PlayerController : MonoBehaviour {
     {
         return verticalSpeedIncrease;
     }
-
-
-
-    // Referencja do kamery
-    public GameObject cameraObject;
+    
 
 	// Flagi koloru wiatru
 	private bool Red;
