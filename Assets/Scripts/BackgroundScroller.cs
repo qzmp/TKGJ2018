@@ -46,8 +46,7 @@ public class BackgroundScroller : MonoBehaviour {
             {
                 rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
-            managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation));
-            managedObjects.First.Value.transform.SetParent(transform);
+            managedObjects.AddFirst(Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length)], spawnPosition, rotation, transform));
         }
 
     }
