@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour {
         }
         SetWindColor();
 
-        rotatePlayer();
+        //rotatePlayer();
     }
 
     void rotatePlayer()
@@ -213,22 +213,22 @@ public class PlayerController : MonoBehaviour {
 				if (Blue)
 					color = Color.white;
 				else
-					color = Color.yellow;
+					color = new Color(245, 223, 123);
 			} 
 			else if (Blue)
-				color = Color.magenta;
+				color = new Color(199, 82, 118);
 			else
-				color = Color.red;
+				color = new Color(197, 94, 94);
 		} 
 		else if (Green) 
 		{
 			if (Blue)
-				color = Color.cyan;
+				color = new Color(105, 201, 167);
 			else
-				color = Color.green;
+				color = new Color(74, 172, 107);
 		} 
 		else if (Blue)
-			color = Color.blue;
+			color = new Color(65, 108, 139);
 		else
 			color = Color.black;
         updateViewedColor();
@@ -236,7 +236,10 @@ public class PlayerController : MonoBehaviour {
 
     void updateViewedColor()
     {
-        renderer.material.SetColor("_Color", this.color);
+
+        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_TintColor", this.color);
+        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
+        //renderer.material.SetColor("_Color", this.color);
         //anim.SetTrigger("swirl");
     }
 

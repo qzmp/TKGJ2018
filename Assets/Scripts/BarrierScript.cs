@@ -30,12 +30,13 @@ public class BarrierScript : MonoBehaviour {
                     boardController.spawnWait -= boardController.spawnWaitDecrease;
                 }
 
-                Destroy(gameObject);
+                
             }
             else
             {
                 other.gameObject.GetComponent<PlayerController>().hp--;
             }
+            Destroy(gameObject);
             damaged = true;
         }
     }
