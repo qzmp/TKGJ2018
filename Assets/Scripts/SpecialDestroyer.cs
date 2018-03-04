@@ -12,7 +12,10 @@ public class SpecialDestroyer : MonoBehaviour {
 
     public void InitiateDestruction()
     {
-        spawner.SpawnNew();
+        if (spawner != null)
+        {
+            spawner.SpawnNew();
+        }
         Destroy(gameObject);
     }
 }
