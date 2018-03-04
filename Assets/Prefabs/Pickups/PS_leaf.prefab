@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e520d5f442f8972419d08729339a6524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 1, a: 0}
+  color: {r: 0.25490198, g: 0.42352942, b: 0.54509807, a: 1}
 --- !u!135 &135618979670212806
 SphereCollider:
   m_ObjectHideFlags: 1

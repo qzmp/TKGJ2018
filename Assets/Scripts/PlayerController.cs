@@ -213,22 +213,22 @@ public class PlayerController : MonoBehaviour {
 				if (Blue)
 					color = Color.white;
 				else
-					color = new Color(245, 223, 123);
+					color = new Color32(245, 223, 123, 255);
 			} 
 			else if (Blue)
-				color = new Color(199, 82, 118);
+				color = new Color32(199, 82, 118,255);
 			else
-				color = new Color(197, 94, 94);
+				color = new Color32(197, 94, 94, 255);
 		} 
 		else if (Green) 
 		{
 			if (Blue)
-				color = new Color(105, 201, 167);
+				color = new Color32(105, 201, 167, 255);
 			else
-				color = new Color(74, 172, 107);
+				color = new Color32(74, 172, 107, 255);
 		} 
 		else if (Blue)
-			color = new Color(65, 108, 139);
+			color = new Color32(65, 108, 139, 255);
 		else
 			color = Color.black;
         updateViewedColor();
@@ -237,8 +237,8 @@ public class PlayerController : MonoBehaviour {
     void updateViewedColor()
     {
 
-        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_TintColor", this.color);
-        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
+        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_Color", this.color);
+        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
         //renderer.material.SetColor("_Color", this.color);
         //anim.SetTrigger("swirl");
     }
