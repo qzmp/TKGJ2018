@@ -27,15 +27,15 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-
+	// Audio
 	private AudioSource[] audioSource;
 	//private AudioSource audioSource;
+	//private AudioSource audioSource2;
 	public AudioClip point;
 	public AudioClip miss;
-	public AudioClip Change;
-
-	//private AudioSource audioSource2;
 	public AudioClip wind;
+	public AudioClip strong_wind;
+	public AudioClip birds;
 
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
@@ -76,9 +76,19 @@ public class PlayerController : MonoBehaviour {
 
     void Start () 
 	{
+		// Audio
 		//audioSource = GetComponent<AudioSource> ();
 		//audioSource2 = GetComponent<AudioSource> ();
 		audioSource = GetComponents<AudioSource>();
+
+		audioSource [0].clip = null;
+		audioSource [1].clip = null;
+		audioSource [2].clip = wind;
+		audioSource [2].loop = true;
+		audioSource [2].Play ();
+		audioSource [3].clip = birds;
+		audioSource [3].loop = true;
+		audioSource [3].Play ();
 
 		// Ustawienie koloru wiatru na czarny (brak koloru)
 		Red = false;
@@ -141,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 
 		if ((Mathf.Sqrt (scaledSpeedY * scaledSpeedY + scaledSpeedX * scaledSpeedX) >= 10) && !audioSource[0].isPlaying)
 		{
-			audioSource[0].clip = wind;
+			audioSource[0].clip = strong_wind;
 			audioSource[0].Play ();
 		}
 
@@ -298,6 +308,9 @@ public class PlayerController : MonoBehaviour {
 
     public void pauseGame()
     {
+		audioSource [0].Pause ();
+		audioSource [2].Pause ();
+
         verticalSpeedOnPause = verticalSpeed;
         horizontalSpeedOnPause = horizontalSpeed;
 
@@ -309,6 +322,9 @@ public class PlayerController : MonoBehaviour {
 
     public void resumeGame()
     {
+		audioSource [0].Play ();
+		audioSource [2].Play ();
+
         verticalSpeed = verticalSpeedOnPause;
         horizontalSpeed = horizontalSpeedOnPause;
 
