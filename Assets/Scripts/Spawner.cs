@@ -9,9 +9,18 @@ public class Spawner : MonoBehaviour {
     public float scale;
 
 	// Update is called once per frame
-	public void SpawnNew () {
-        Vector3 spawnPosition = new Vector3(transform.position.x + location.x, location.y, location.z);
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0));
+	public void SpawnNew ()
+	{
+	    var isCloud = prefabs[0].tag == "cloud";
+
+        var y = location.y;
+	    if (isCloud)
+	    {
+	        y = UnityEngine.Random.Range(location.y-1, location.y+1);
+	    }
+
+        Vector3 spawnPosition = new Vector3(transform.position.x + location.x, y, location.z);
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, !isCloud ? UnityEngine.Random.Range(0, 360) : 0, 0));
         GameObject newObject = Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length - 1)], spawnPosition, rotation);
         newObject.GetComponent<SpecialDestroyer>().spawner = this;
         newObject.transform.localScale = new Vector3(scale, scale, scale);
