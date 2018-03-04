@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4464600983993160}
+  - component: {fileID: 114987599333121534}
   - component: {fileID: 33873095862665022}
   - component: {fileID: 23334155878358264}
-  - component: {fileID: 114117269458677266}
+  - component: {fileID: 54836431605681572}
   m_Layer: 0
   m_Name: trees03
   m_TagString: Untagged
@@ -84,7 +85,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082888867522444}
   m_Mesh: {fileID: 4300000, guid: 60d1a117c75a67d4da45b804b47f3cbf, type: 3}
---- !u!114 &114117269458677266
+--- !u!54 &54836431605681572
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082888867522444}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114987599333121534
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,6 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082888867522444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f868f48cc13e19348a4c20cf5e23b770, type: 3}
+  m_Script: {fileID: 11500000, guid: 459cb0bdacac82a40842cfe47d6bbcbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}

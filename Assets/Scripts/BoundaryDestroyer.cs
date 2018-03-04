@@ -6,9 +6,13 @@ public class BoundaryDestroyer : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnTriggerExit (Collider other) {
-	    if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") && !other.CompareTag("Background"))
 	    {
-	        Destroy(other.gameObject);
+            if (other.gameObject.GetComponent<SpecialDestroyer>() != null)
+            {
+                other.gameObject.GetComponent<SpecialDestroyer>().InitiateDestruction();
+            }
+            Destroy(other.gameObject);
 	    }
 	}
 }

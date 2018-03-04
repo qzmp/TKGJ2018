@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4410896890642956}
+  - component: {fileID: 114845817549278220}
   - component: {fileID: 33451657016999822}
   - component: {fileID: 23455494155736222}
-  - component: {fileID: 114596164882324406}
+  - component: {fileID: 54684721925009178}
   m_Layer: 0
   m_Name: bush02
   m_TagString: Untagged
@@ -83,7 +84,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452709397721444}
   m_Mesh: {fileID: 4300000, guid: 1c692457746a017459dc20c6da461178, type: 3}
---- !u!114 &114596164882324406
+--- !u!54 &54684721925009178
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452709397721444}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114845817549278220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,6 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452709397721444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f868f48cc13e19348a4c20cf5e23b770, type: 3}
+  m_Script: {fileID: 11500000, guid: 459cb0bdacac82a40842cfe47d6bbcbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
