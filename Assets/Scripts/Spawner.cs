@@ -6,13 +6,13 @@ public class Spawner : MonoBehaviour {
 
     public GameObject[] prefabs;
     public Vector3 location;
-    public bool isCloud;
 
 	// Update is called once per frame
 	public void SpawnNew ()
 	{
+	    var isCloud = prefabs[0].tag == "cloud";
 
-	    var y = location.y;
+        var y = location.y;
 	    if (isCloud)
 	    {
 	        y = UnityEngine.Random.Range(location.y-1, location.y+1);

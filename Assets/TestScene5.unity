@@ -1368,6 +1368,46 @@ Prefab:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 2074823500}
+    - target: {fileID: 1299776965060528, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248295370659872, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826784328845758, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826297347945514, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889951324980900, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464510474751278, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958676725031932, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495937984104398, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992474998934106, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530690639639914, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
+      propertyPath: m_TagString
+      value: cloud
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d922675f24b927841b385e1fc7c10f9a, type: 2}
   m_IsPrefabParent: 0
@@ -1505,7 +1545,6 @@ MonoBehaviour:
   - {fileID: 222743035}
   - {fileID: 222743035}
   location: {x: 70, y: -5, z: 20}
-  isCloud: 0
 --- !u!1 &303451837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,7 +5322,6 @@ MonoBehaviour:
   - {fileID: 1805984459567244, guid: 46ab6576d4601734bba02268c4619a30, type: 2}
   - {fileID: 1532040532109922, guid: ef84306b5bcdc59488879c81f31dff4e, type: 2}
   location: {x: 70, y: -5, z: 40}
-  isCloud: 0
 --- !u!1 &1043177649 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1364711313273268, guid: 80b34e7a5e024394b836b31182c8ef74,
