@@ -237,8 +237,12 @@ public class PlayerController : MonoBehaviour {
     void updateViewedColor()
     {
 
-        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_Color", this.color);
-        transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
+        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_Color", this.color);
+        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
+        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().startColor = this.color;
+        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().endColor = this.color;
+        transform.GetChild(0).GetComponentInChildren<TrailRenderer>().material.SetColor("_Color", this.color);
+        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().material.SetColor("_EmissionColor", this.color);
         //renderer.material.SetColor("_Color", this.color);
         //anim.SetTrigger("swirl");
     }
