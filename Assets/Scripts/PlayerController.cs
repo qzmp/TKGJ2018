@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour {
         }
         SetWindColor();
 
-        //rotatePlayer();
+        rotatePlayer();
     }
 
     void rotatePlayer()
@@ -208,17 +208,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (Red) 
 		{
-			if (Green) 
-			{
-				if (Blue)
-					color = Color.white;
-				else
-					color = new Color32(245, 223, 123, 255);
-			} 
-			else if (Blue)
-				color = new Color32(199, 82, 118,255);
-			else
-				color = new Color32(197, 94, 94, 255);
+            if (Green)
+            {
+                if (Blue)
+                    color = Color.white;
+                else
+                    color = new Color32(245, 223, 123, 255);
+            }
+            else if (Blue)
+                color = new Color32(199, 82, 118, 255);
+            else
+                color = new Color32(197, 94, 94, 255);
 		} 
 		else if (Green) 
 		{
@@ -231,6 +231,7 @@ public class PlayerController : MonoBehaviour {
 			color = new Color32(65, 108, 139, 255);
 		else
 			color = Color.black;
+
         updateViewedColor();
 	}
 
@@ -241,7 +242,10 @@ public class PlayerController : MonoBehaviour {
         //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
         //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().startColor = this.color;
         //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().endColor = this.color;
-        transform.GetChild(0).GetComponentInChildren<TrailRenderer>().material.SetColor("_Color", this.color);
+        foreach(TrailRenderer r in transform.GetChild(0).GetComponentsInChildren<TrailRenderer>())
+        {
+            r.material.SetColor("_Color", this.color);
+        }
         //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().material.SetColor("_EmissionColor", this.color);
         //renderer.material.SetColor("_Color", this.color);
         //anim.SetTrigger("swirl");
