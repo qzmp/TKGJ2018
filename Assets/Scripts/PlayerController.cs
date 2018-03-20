@@ -105,62 +105,26 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-	    // Przemieszczanie gracza wzgledem pozycji myszki
-		//--------
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
 
-		float mousePositionX = Input.mousePosition.x;
-		if (mousePositionX < 0.0f)
-			mousePositionX = 0;
-		else if (mousePositionX > Camera.main.pixelWidth)
-			mousePositionX = Camera.main.pixelWidth;
+        //Maybe delete clamping later
+		float mousePositionY = Mathf.Clamp(Input.mousePosition.y, 0, Camera.main.pixelHeight);
+		float scaledSpeedY = (mousePositionY- playerPosition.y) / Camera.main.pixelHeight * verticalSpeed;
 
-		float mousePositionY = Input.mousePosition.y;
-		if (mousePositionY < 0.0f)
-			mousePositionY = 0;
-		else if (mousePositionY > Camera.main.pixelHeight)
-			mousePositionY = Camera.main.pixelHeight;
-
-        //Debug.Log("target: " + playerPosition.y + ", mouse is: " + Input.mousePosition);
-
-		float moveVertical = 0;
-        if ((mousePositionY > playerPosition.y + 1 * verticalSpeed) && (playerPosition.y < Camera.main.pixelHeight))
-            moveVertical = 1;
-        else if ((mousePositionY < playerPosition.y - 1 * verticalSpeed) && (playerPosition.y > 0))
-            moveVertical = -1;
-
-		float moveHorizontal = 0;
-		if ((mousePositionX > playerPosition.x + 1 * verticalSpeed) && (playerPosition.x < Camera.main.pixelWidth))
-			moveHorizontal = 1;
-		else if ((mousePositionX < playerPosition.x - 1 * verticalSpeed) && (playerPosition.x > 0))
-			moveHorizontal = -1;
-		
-		//float scaledSpeedY = Mathf.Abs(Mathf.Abs(playerPosition.y - mousePositionY) / (Camera.main.pixelHeight / 2)) * verticalSpeed;
-		//float scaledSpeedX = Mathf.Abs(Mathf.Abs(playerPosition.x - mousePositionX) / (Camera.main.pixelWidth / 2)) * verticalSpeed;
-
-		//float scaledSpeedY = Mathf.Sqrt((Mathf.Abs(playerPosition.y - mousePositionY))/(Camera.main.pixelHeight/50) * verticalSpeed);
-		//float scaledSpeedX = Mathf.Sqrt((Mathf.Abs(playerPosition.x - mousePositionX))/(Camera.main.pixelWidth/50) * horizontalSpeed);
-
-		float scaledSpeedY = Mathf.Sqrt((Mathf.Abs(playerPosition.y - mousePositionY))/20 * verticalSpeed);
-		float scaledSpeedX = Mathf.Sqrt((Mathf.Abs(playerPosition.x - mousePositionX))/20 * horizontalSpeed);
-
-		Debug.Log (Mathf.Sqrt(scaledSpeedY*scaledSpeedY + scaledSpeedX*scaledSpeedX));
-
-		if ((Mathf.Sqrt (scaledSpeedY * scaledSpeedY + scaledSpeedX * scaledSpeedX) >= 20) && !audioSource[0].isPlaying)
-		{
-			audioSource[0].clip = strong_wind;
-			audioSource[0].Play ();
-		}
-
-		Vector3 movement = new Vector3 (horizontalSpeed + (moveHorizontal * scaledSpeedX), moveVertical * scaledSpeedY, 0.0f);
+		Vector3 movement = new Vector3 (horizontalSpeed, scaledSpeedY, 0.0f);
 		GetComponent<Rigidbody>().velocity = movement;
-		//--------
 
+        CalculateColors();
+
+        RotatePlayerDisplay();
+    }
+
+    void CalculateColors()
+    {
         Red = false;
         Green = false;
         Blue = false;
-        if(Input.anyKey)
+        if (Input.anyKey)
         {
             if (Input.GetKey("q"))
             {
@@ -176,32 +140,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
         SetWindColor();
-
-        rotatePlayer();
     }
 
-    void rotatePlayer()
+    void RotatePlayerDisplay()
     {
         GetComponentInChildren<Transform>().Rotate(new Vector3(1, 0, 0), rotateSpeed);
     }
-
-	void FixedUpdate ()
-	{
-		// Zmiana flag koloru po przycisnieciu klawiszy RGB
-
-
-		// Ruch przy pomocy strzalek
-		//if (Input.GetKeyDown ("up")) 
-			//rb.AddForce (new Vector3 (0, 5, 0));
-			//transform.position = new Vector3(0, transform.position.y + 0.05f * speed, 0);
-
-		//float moveVertical = Input.GetAxis ("Vertical");
-		//Vector3 movement = new Vector3 (0.0f, moveVertical, 0.0f);
-		//GetComponent<Rigidbody>().velocity = movement * speed;
-
-
-
-	}
 
 	// Ustalanie koloru wiatru na podstawie flag
 	private void SetWindColor ()
@@ -237,18 +181,10 @@ public class PlayerController : MonoBehaviour {
 
     void updateViewedColor()
     {
-
-        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_Color", this.color);
-        //transform.GetChild(0).GetComponentInChildren<ParticleSystemRenderer>().trailMaterial.SetColor("_EmissionColor", this.color);
-        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().startColor = this.color;
-        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().endColor = this.color;
         foreach(TrailRenderer r in transform.GetChild(0).GetComponentsInChildren<TrailRenderer>())
         {
             r.material.SetColor("_Color", this.color);
         }
-        //transform.GetChild(0).GetComponentInChildren<TrailRenderer>().material.SetColor("_EmissionColor", this.color);
-        //renderer.material.SetColor("_Color", this.color);
-        //anim.SetTrigger("swirl");
     }
 
 
