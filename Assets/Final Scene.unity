@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -264,6 +264,21 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 114816154043464204, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2,
+        type: 2}
+      propertyPath: redButton
+      value: 
+      objectReference: {fileID: 2132050781}
+    - target: {fileID: 114816154043464204, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2,
+        type: 2}
+      propertyPath: greenButton
+      value: 
+      objectReference: {fileID: 1043984882}
+    - target: {fileID: 114816154043464204, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2,
+        type: 2}
+      propertyPath: blueButton
+      value: 
+      objectReference: {fileID: 767271970}
     m_RemovedComponents:
     - {fileID: 54722587542985776, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2, type: 2}
     - {fileID: 135079381379498858, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2, type: 2}
@@ -340,6 +355,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1325417884}
   m_Script: {fileID: 11500000, guid: 8440e9a691c375b4baf40a352b152e68, type: 3}
+--- !u!114 &767271970 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114476374609365532, guid: 258292ec121b15d448900dbf67aa48bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 2133342627}
+  m_Script: {fileID: 11500000, guid: 332ed68889f6488478aedb53a5584446, type: 3}
 --- !u!1 &833747535
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +502,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4124271373570758, guid: 1453e37e6bc2e754d8c2e5bb8c635165,
     type: 2}
   m_PrefabInternal: {fileID: 2024377765}
+--- !u!114 &1043984882 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114428077020737208, guid: 258292ec121b15d448900dbf67aa48bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 2133342627}
+  m_Script: {fileID: 11500000, guid: 332ed68889f6488478aedb53a5584446, type: 3}
 --- !u!1 &1091527604 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1455600315593996, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2,
@@ -1009,6 +1036,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4805994703153334, guid: 79339fa89996a1643836195531f36583,
     type: 2}
   m_PrefabInternal: {fileID: 1325417884}
+--- !u!114 &2132050781 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114699011128160018, guid: 258292ec121b15d448900dbf67aa48bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 2133342627}
+  m_Script: {fileID: 11500000, guid: 332ed68889f6488478aedb53a5584446, type: 3}
 --- !u!1001 &2133342627
 Prefab:
   m_ObjectHideFlags: 0
