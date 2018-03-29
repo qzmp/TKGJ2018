@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour {
@@ -72,6 +73,10 @@ public class PlayerController : MonoBehaviour {
     private float verticalSpeedOnPause;
     private float horizontalSpeedOnPause;
 
+    public ControlButtonScript redButton;
+    public ControlButtonScript greenButton;
+    public ControlButtonScript blueButton;
+
     void Start () 
 	{
 		// Audio
@@ -126,20 +131,17 @@ public class PlayerController : MonoBehaviour {
         Red = false;
         Green = false;
         Blue = false;
-        if (Input.anyKey)
+        if (Input.GetKey("q") || redButton.buttonPressed)
         {
-            if (Input.GetKey("q"))
-            {
-                Red = true;
-            }
-            if (Input.GetKey("w"))
-            {
-                Green = true;
-            }
-            if (Input.GetKey("e"))
-            {
-                Blue = true;
-            }
+            Red = true;
+        }
+        if (Input.GetKey("w") || greenButton.buttonPressed)
+        {
+            Green = true;
+        }
+        if (Input.GetKey("e") || blueButton.buttonPressed)
+        {
+            Blue = true;
         }
         SetWindColor();
     }
@@ -252,4 +254,5 @@ public class PlayerController : MonoBehaviour {
 
         GameController.SetActive(true);
     }
+    
 }

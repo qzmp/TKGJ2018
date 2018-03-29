@@ -11,10 +11,18 @@ public class UIController : MonoBehaviour {
     public GameObject HPPanel;
     public GameObject gameOverPanel;
     public GameObject pausePanel;
+    public GameObject controlPanel;
 
     bool isGameOver;
 
+    private PlayerController pc;
+
     private int activeHP = 3;
+
+    private void Start()
+    {
+        pc = FindObjectOfType<PlayerController>();
+    }
 
     void Update()
     {
@@ -46,13 +54,13 @@ public class UIController : MonoBehaviour {
     public void ActivatePause()
     {
         pausePanel.SetActive(true);
-        FindObjectOfType<PlayerController>().pauseGame();
+        pc.pauseGame();
     }
 
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
-        FindObjectOfType<PlayerController>().resumeGame();
+        pc.resumeGame();
     }
 
     public void ExitToMainMenu()
