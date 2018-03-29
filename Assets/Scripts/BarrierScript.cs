@@ -5,10 +5,7 @@ using UnityEngine;
 public class BarrierScript : MonoBehaviour {
 
     public ColorsManager colorsManager;
-
-    private Color color;
-    public Color Color { get { return color; } }
-
+    
     private void OnEnable()
     {
         RandomizeTrailMaterial();
@@ -18,4 +15,5 @@ public class BarrierScript : MonoBehaviour {
     {
         GetComponent<ParticleSystemRenderer>().trailMaterial = colorsManager.GetRandomMaterial();
     }
+
 }

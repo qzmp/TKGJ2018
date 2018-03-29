@@ -30,14 +30,14 @@ public class PlayerColliderScript : MonoBehaviour {
 
     private void PassBarrier(Collider other)
     {
-        if (other.gameObject.GetComponent<BarrierScript>().Color == pc.color)
+        if (other.gameObject.GetComponent<ParticleSystemRenderer>().trailMaterial.color == pc.color)
         {
             pc.score++;
             pc.updateSpeed();
         }
         else
         {
-            other.gameObject.GetComponent<PlayerController>().hp--;
+            pc.hp--;
         }
     }
 }
