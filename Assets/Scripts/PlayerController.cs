@@ -222,8 +222,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (horizontalSpeed < maxHorizontalSpeed)
         {
-            horizontalSpeed = horizontalSpeed + score * horizontalSpeedIncrease;
-            verticalSpeed = verticalSpeed + score * verticalSpeedIncrease;
+            horizontalSpeed += horizontalSpeedIncrease;
+            verticalSpeed += verticalSpeedIncrease;
         }
  
     }

@@ -6,7 +6,7 @@ public class BoundaryDestroyer : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnTriggerExit (Collider other) {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") && other.CompareTag("Barrier"))
 	    {
             other.gameObject.SetActive(false);
 	    }

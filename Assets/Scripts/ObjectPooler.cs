@@ -36,18 +36,18 @@ public class ObjectPooler : MonoBehaviour {
         }        
     }
 
-    public GameObject GetPooledObject(string tag)
+    public GameObject GetPooledObject(string name)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name.Contains(name))
             {
                 return pooledObjects[i];
             }
         }
         foreach(ObjectPoolItem item in itemsToPool)
         {
-            if(item.objectToPool.tag == tag)
+            if(item.objectToPool.name.Contains(name))
             {
                 if (item.shouldExpand)
                 {

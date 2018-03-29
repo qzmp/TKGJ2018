@@ -22,9 +22,13 @@ public class BoardController : MonoBehaviour {
         yield return new WaitForSeconds(startWait);
         while (true)
         {
-            GameObject obj = ObjectPooler.SharedInstance.GetPooledObject("Barrier");
+            GameObject obj = ObjectPooler.SharedInstance.GetPooledObject(spawns[Random.Range(0, spawns.Length)].name);
             obj.transform.position = new Vector3(transform.position.x + xExtent, obj.transform.position.y, obj.transform.position.z);
             obj.SetActive(true);
+            foreach(Transform child in obj.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
 
             yield return new WaitForSeconds(spawnWait + Random.Range(-spawnWait * spawnWaitRandomPercent, spawnWait * spawnWaitRandomPercent));
         }
