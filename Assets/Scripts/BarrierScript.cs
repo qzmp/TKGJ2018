@@ -9,7 +9,7 @@ public class BarrierScript : MonoBehaviour {
     private Color color;
     public Color Color { get { return color; } }
 
-    private void Start()
+    private void OnEnable()
     {
         RandomizeTrailMaterial();
     }

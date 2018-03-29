@@ -260,6 +260,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ffec17a5ef894b649ad204910390a3da,
         type: 2}
+    - target: {fileID: 1840057196597588, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54722587542985776, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2, type: 2}
     - {fileID: 135079381379498858, guid: 6ed4ebc60b8aa9243ab59d0dee53dee2, type: 2}
@@ -571,6 +575,52 @@ Prefab:
     - {fileID: 114543350403574878, guid: 79339fa89996a1643836195531f36583, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 79339fa89996a1643836195531f36583, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1501916429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1501916431}
+  - component: {fileID: 1501916430}
+  m_Layer: 0
+  m_Name: Game Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1501916430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501916429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7459aa7b4d6cc4aa51f382501119a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  itemsToPool:
+  - objectToPool: {fileID: 1468887925317258, guid: dcf00ad2d022a994b846afa49ff752fa,
+      type: 2}
+    amountToPool: 3
+    shouldExpand: 1
+--- !u!4 &1501916431
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501916429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1649990836 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114731784730278338, guid: 79339fa89996a1643836195531f36583,
@@ -733,7 +783,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4827272986809896, guid: b3c3ddc4d9cbf4b4bac11657f6f6f020, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4827272986809896, guid: b3c3ddc4d9cbf4b4bac11657f6f6f020, type: 2}
       propertyPath: m_LocalScale.z

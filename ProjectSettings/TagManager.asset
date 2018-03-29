@@ -8,6 +8,7 @@ TagManager:
   - cloud
   - Solid Barrier
   - Passable Barrier
+  - Barrier
   layers:
   - Default
   - TransparentFX

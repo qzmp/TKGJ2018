@@ -16,14 +16,17 @@ public class BoardController : MonoBehaviour {
         xExtent = GetComponent<Collider>().bounds.extents.x;
         StartCoroutine(Spawn());
     }
-
+        
     IEnumerator Spawn()
     {
         yield return new WaitForSeconds(startWait);
         while (true)
         {
+            GameObject obj = ObjectPooler.SharedInstance.GetPooledObject("Barrier");
             Vector3 spawnPosition = new Vector3(transform.position.x + xExtent, 0, 0);
-            Instantiate(spawns[Random.Range(0, spawns.Length - 1)], spawnPosition, Quaternion.identity);
+            obj.transform.position = spawnPosition;
+            obj.SetActive(true);
+
             yield return new WaitForSeconds(spawnWait + Random.Range(-spawnWait * spawnWaitRandomPercent, spawnWait * spawnWaitRandomPercent));
         }
     }
