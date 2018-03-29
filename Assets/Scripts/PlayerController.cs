@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
     public const string HIGHSCORE_KEY = "highscore";
 
+    public ColorsManager colorsManager;
+
     private int _hp = 3;
     public int hp {
         get { return _hp; }
@@ -146,36 +148,11 @@ public class PlayerController : MonoBehaviour {
     {
         GetComponentInChildren<Transform>().Rotate(new Vector3(1, 0, 0), rotateSpeed);
     }
-
-	// Ustalanie koloru wiatru na podstawie flag
+    
 	private void SetWindColor ()
 	{
-		if (Red) 
-		{
-            if (Green)
-            {
-                if (Blue)
-                    color = Color.white;
-                else
-                    color = new Color32(245, 223, 123, 255);
-            }
-            else if (Blue)
-                color = new Color32(199, 82, 118, 255);
-            else
-                color = new Color32(197, 94, 94, 255);
-		} 
-		else if (Green) 
-		{
-			if (Blue)
-				color = new Color32(105, 201, 167, 255);
-			else
-				color = new Color32(74, 172, 107, 255);
-		} 
-		else if (Blue)
-			color = new Color32(65, 108, 139, 255);
-		else
-			color = Color.black;
 
+        this.color = colorsManager.GetColor(Red, Green, Blue);
         updateViewedColor();
 	}
 

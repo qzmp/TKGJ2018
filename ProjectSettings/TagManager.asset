@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Background
   - cloud
+  - Solid Barrier
+  - Passable Barrier
   layers:
   - Default
   - TransparentFX
