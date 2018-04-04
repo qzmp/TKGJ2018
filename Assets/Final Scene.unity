@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -629,9 +629,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7459aa7b4d6cc4aa51f382501119a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
   itemsToPool:
   - objectToPool: {fileID: 1468887925317258, guid: dcf00ad2d022a994b846afa49ff752fa,
+      type: 2}
+    amountToPool: 3
+    shouldExpand: 1
+  - objectToPool: {fileID: 1315197489281242, guid: f55fae5922c82ff4aa8b34fba88ea50c,
       type: 2}
     amountToPool: 3
     shouldExpand: 1
@@ -693,7 +696,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64454651139745282, guid: c9907e4efa5266d4e8fc1352dcb4b61e, type: 2}
+    - {fileID: 64630495642987304, guid: c9907e4efa5266d4e8fc1352dcb4b61e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c9907e4efa5266d4e8fc1352dcb4b61e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1814621802
@@ -847,6 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawns:
   - {fileID: 1468887925317258, guid: dcf00ad2d022a994b846afa49ff752fa, type: 2}
+  - {fileID: 1315197489281242, guid: f55fae5922c82ff4aa8b34fba88ea50c, type: 2}
   startWait: 5
   spawnWait: 5
   spawnWaitRandomPercent: 0.3

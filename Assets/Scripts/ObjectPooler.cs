@@ -9,14 +9,17 @@ public class ObjectPoolItem
     public int amountToPool;
     public bool shouldExpand = true;
 }
+
 public class ObjectPooler : MonoBehaviour {
 
     public static ObjectPooler SharedInstance;
 
     //Could be made faster with separate List For every type of pooled object
-    public List<GameObject> pooledObjects;
+    //public List<GameObject> pooledObjects;
 
     public List<ObjectPoolItem> itemsToPool;
+
+    public Dictionary<GameObject, List<GameObject>> pooledObjects;
 
 	void Awake () {
         SharedInstance = this;
@@ -24,40 +27,43 @@ public class ObjectPooler : MonoBehaviour {
 
     public void Start()
     {
-        pooledObjects = new List<GameObject>();
+        pooledObjects = new Dictionary<GameObject, List<GameObject>>();
         foreach(ObjectPoolItem item in itemsToPool)
         {
+            pooledObjects[item.objectToPool] = new List<GameObject>();
             for (int i = 0; i < item.amountToPool; i++)
             {
                 GameObject obj = Instantiate(item.objectToPool);
                 obj.SetActive(false);
-                pooledObjects.Add(obj);
+                pooledObjects[item.objectToPool].Add(obj);
             }
         }        
     }
 
-    public GameObject GetPooledObject(string name)
+    public GameObject GetPooledObject(GameObject prefab)
     {
-        for (int i = 0; i < pooledObjects.Count; i++)
+        for (int i = 0; i < pooledObjects[prefab].Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name.Contains(name))
+            if(!pooledObjects[prefab][i].activeInHierarchy)
             {
-                return pooledObjects[i];
+                return pooledObjects[prefab][i];
             }
         }
+
         foreach(ObjectPoolItem item in itemsToPool)
         {
-            if(item.objectToPool.name.Contains(name))
+            if(item.objectToPool.gameObject == prefab)
             {
                 if (item.shouldExpand)
                 {
                     GameObject obj = Instantiate(item.objectToPool);
                     obj.SetActive(false);
-                    pooledObjects.Add(obj);
+                    pooledObjects[prefab].Add(obj);
                     return obj;
                 }
             }
         }
+
         return null;
     }
 }

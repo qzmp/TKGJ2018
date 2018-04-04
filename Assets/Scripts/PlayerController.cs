@@ -126,6 +126,8 @@ public class PlayerController : MonoBehaviour {
         RotatePlayerDisplay();
     }
 
+
+
     void CalculateColors()
     {
         Red = false;
