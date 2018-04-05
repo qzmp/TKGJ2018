@@ -6,8 +6,6 @@ public class FollowScript : MonoBehaviour {
 
     public GameObject target;
 
-	private float speed;
-
 	void Start ()
 	{
 	}

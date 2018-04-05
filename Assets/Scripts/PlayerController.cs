@@ -72,10 +72,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject GameController;
     private float verticalSpeedOnPause;
     private float horizontalSpeedOnPause;
-
+    
     public ControlButtonScript redButton;
     public ControlButtonScript greenButton;
     public ControlButtonScript blueButton;
+    
+    private Rect movementTouchArea;
+    private Touch? movementTouch = null;
 
     void Start () 
 	{
@@ -103,23 +106,46 @@ public class PlayerController : MonoBehaviour {
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
 
+        movementTouchArea = new Rect(0, 0, Screen.width * 0.8f, Screen.height);
+
 	    verticalSpeedIncrease = horizontalSpeedIncrease / horizontalToVerticalSpeedIncreaseFactor;
 
 	    updateViewedColor();
     }
+    void OnGUI()
+    {
+        //GUI.Box(movementTouchArea, "");
+    }
 
-	
-	// Update is called once per frame
-	void Update () {
 
-        Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
+    // Update is called once per frame
+    void Update () {
 
-        //Maybe delete clamping later
-		float mousePositionY = Mathf.Clamp(Input.mousePosition.y, 0, Camera.main.pixelHeight);
-		float scaledSpeedY = (mousePositionY- playerPosition.y) / Camera.main.pixelHeight * verticalSpeed;
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began && movementTouch == null && movementTouchArea.Contains(Input.GetTouch(i).position))
+            {
+                movementTouch = Input.GetTouch(i);
+            }
+        }
+        
+        if(movementTouch != null)
+        {
+            Vector3 playerPosition = Camera.main.WorldToScreenPoint(GetComponent<Transform>().position);
 
-		Vector3 movement = new Vector3 (horizontalSpeed, scaledSpeedY, 0.0f);
-		GetComponent<Rigidbody>().velocity = movement;
+            //Maybe delete clamping later
+            float mousePositionY = Mathf.Clamp(movementTouch.Value.position.y, 0, Camera.main.pixelHeight);
+            float scaledSpeedY = (mousePositionY - playerPosition.y) / Camera.main.pixelHeight * verticalSpeed;
+
+            Vector3 velocity = new Vector3(horizontalSpeed, scaledSpeedY, 0.0f);
+            GetComponent<Rigidbody>().velocity = velocity;
+        }
+        else
+        {
+            Vector3 velocity = new Vector3(horizontalSpeed, 0f, 0f);
+            GetComponent<Rigidbody>().velocity = velocity;
+        }
+        
 
         CalculateColors();
 
