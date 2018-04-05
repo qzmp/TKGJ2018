@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 
         for (int i = 0; i < Input.touchCount; ++i)
         {
-            if (Input.GetTouch(i).phase == TouchPhase.Began && movementTouch == null && movementTouchArea.Contains(Input.GetTouch(i).position))
+            if (Input.GetTouch(i).phase == TouchPhase.Began && movementTouchArea.Contains(Input.GetTouch(i).position))
             {
                 movementTouch = Input.GetTouch(i);
             }
