@@ -127,6 +127,10 @@ public class PlayerController : MonoBehaviour {
             {
                 movementTouch = Input.GetTouch(i);
             }
+            if(Input.GetTouch(i).phase == TouchPhase.Moved && movementTouch != null && Input.GetTouch(i).fingerId == movementTouch.Value.fingerId)
+            {
+                movementTouch = Input.GetTouch(i);
+            }
         }
         
         if(movementTouch != null)
