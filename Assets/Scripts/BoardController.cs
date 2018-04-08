@@ -9,11 +9,10 @@ public class BoardController : MonoBehaviour {
     public float spawnWait = 5;
     public float spawnWaitRandomPercent = 0.3f;
 
-    private float xExtent;
+    private float xBoundaryMax;
 
     void Start()
     {
-        xExtent = GetComponent<Collider>().bounds.extents.x;
         StartCoroutine(Spawn());
     }
         
@@ -22,8 +21,9 @@ public class BoardController : MonoBehaviour {
         yield return new WaitForSeconds(startWait);
         while (true)
         {
+            xBoundaryMax = GetComponent<Collider>().bounds.max.x;
             GameObject obj = ObjectPooler.SharedInstance.GetPooledObject(spawns[Random.Range(0, spawns.Length)]);
-            obj.transform.position = new Vector3(transform.position.x + xExtent, obj.transform.position.y, obj.transform.position.z);
+            obj.transform.position = new Vector3(xBoundaryMax, obj.transform.position.y, obj.transform.position.z);
             obj.SetActive(true);
             foreach(Transform child in obj.transform)
             {
