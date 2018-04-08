@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
+	//#Audio
+	private AudioSource audioSource;
+	public AudioClip point;
+	public AudioClip miss;
+	//---
+
     public Text scoreText;
 
     public GameObject HPPanel;
@@ -21,6 +27,10 @@ public class UIController : MonoBehaviour {
 
     private void Start()
     {
+		//#Audio
+		audioSource = GetComponent<AudioSource>();
+		//---
+
         pc = FindObjectOfType<PlayerController>();
     }
 
@@ -34,11 +44,21 @@ public class UIController : MonoBehaviour {
 
     public void UpdateScore(int score)
     {
+		//#Audio
+		audioSource.clip = point;
+		audioSource.Play ();
+		//---
+
         scoreText.text = score.ToString();
     }
 
     public void RemoveHP()
     {
+		//#Audio
+		audioSource.clip = miss;
+		audioSource.Play ();
+		//---
+
         if(activeHP != 0)
         {
             HPPanel.transform.GetChild(--activeHP).gameObject.SetActive(false);

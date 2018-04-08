@@ -30,15 +30,15 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-	// Audio
+	// #Audio
+	/*
 	private AudioSource[] audioSource;
-	//private AudioSource audioSource;
-	//private AudioSource audioSource2;
 	public AudioClip point;
 	public AudioClip miss;
 	public AudioClip wind;
 	public AudioClip strong_wind;
 	public AudioClip birds;
+	*/
 
 	// Predkosc ruchu
 	public float verticalSpeed = 5;
@@ -83,9 +83,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start () 
 	{
-		// Audio
-		//audioSource = GetComponent<AudioSource> ();
-		//audioSource2 = GetComponent<AudioSource> ();
+		//#Audio
+		/*
 		audioSource = GetComponents<AudioSource>();
 
 		audioSource [0].clip = null;
@@ -98,6 +97,8 @@ public class PlayerController : MonoBehaviour {
 		audioSource [3].clip = birds;
 		audioSource [3].loop = true;
 		audioSource [3].Play ();
+		*/
+		//---
 
 		// Ustawienie koloru wiatru na czarny (brak koloru)
 		Red = false;
@@ -222,16 +223,20 @@ public class PlayerController : MonoBehaviour {
 
     private void updateScore()
     {
-		audioSource[1].clip = point;
-		audioSource[1].Play ();
+		//#Audio
+		//audioSource[1].clip = point;
+		//audioSource[1].Play ();
+		//---
 
         uiController.UpdateScore(score);
     }
 
     private void updateHP()
     {
-		audioSource[1].clip = miss;
-		audioSource[1].Play ();
+		//#Audio
+		//audioSource[1].clip = miss;
+		//audioSource[1].Play ();
+		//---
 
         uiController.RemoveHP();
         if(hp == 0)
@@ -270,8 +275,10 @@ public class PlayerController : MonoBehaviour {
 
     public void pauseGame()
     {
-		audioSource [0].Pause ();
-		audioSource [2].Pause ();
+		//#Audio
+		//audioSource [0].Pause ();
+		//audioSource [2].Pause ();
+		//---
 
         verticalSpeedOnPause = verticalSpeed;
         horizontalSpeedOnPause = horizontalSpeed;
@@ -284,8 +291,10 @@ public class PlayerController : MonoBehaviour {
 
     public void resumeGame()
     {
-		audioSource [0].Play ();
-		audioSource [2].Play ();
+		//#Audio
+		//audioSource [0].Play ();
+		//audioSource [2].Play ();
+		//---
 
         verticalSpeed = verticalSpeedOnPause;
         horizontalSpeed = horizontalSpeedOnPause;
