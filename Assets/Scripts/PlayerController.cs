@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour {
     
     private Rect movementTouchArea;
     private Touch? movementTouch = null;
+    private bool isMovementHeld = false;
 
     void Start () 
 	{
@@ -123,13 +124,18 @@ public class PlayerController : MonoBehaviour {
 
         for (int i = 0; i < Input.touchCount; ++i)
         {
-            if (Input.GetTouch(i).phase == TouchPhase.Began && movementTouchArea.Contains(Input.GetTouch(i).position))
+            if (Input.GetTouch(i).phase == TouchPhase.Began && movementTouchArea.Contains(Input.GetTouch(i).position) && !isMovementHeld)
             {
                 movementTouch = Input.GetTouch(i);
+                isMovementHeld = true;
             }
             if(Input.GetTouch(i).phase == TouchPhase.Moved && movementTouch != null && Input.GetTouch(i).fingerId == movementTouch.Value.fingerId)
             {
                 movementTouch = Input.GetTouch(i);
+            }
+            if(Input.GetTouch(i).phase == TouchPhase.Ended && Input.GetTouch(i).fingerId == movementTouch.Value.fingerId)
+            {
+                isMovementHeld = false;
             }
         }
         
